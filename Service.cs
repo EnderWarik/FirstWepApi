@@ -1,31 +1,33 @@
 ﻿namespace TestProjectTZ
 {
-    public class Service : Repository
+    public class Service
     {
-
-        public string POST(string name, int price)
+        Repository repository;
+        public Service(Repository repository) { this.repository = repository; }
+        public string Create(string name, int price)
         {
-            return Create(name,price);
+            return repository.Create(name,price);   
         }
 
-        public string DELETE( int id)
+        public string Delete( int id)
         {
-            return Delete(id);
+            return repository.Delete(id);
         }
          
-        public List<Product> GET(){
-            List<Product> products = FindAll();
+        public List<Product> FindAll(){
+            List<Product> products = repository.FindAll();
            return products;
     }
 
-        public List<Product> GETbyID(int id)
+        public List<Product> FindbyID(int id)
         {
-            List<Product> products = FindByID(id);
+            List<Product> products = repository.FindByID(id);
             return products;
         }
-        public string PUT(int id,string name, int price)
+        public string Update(int id,string name, int price)
         {
-            return Update(id,name,price);
+
+            return repository.Update(id,name,price);
         }
         
     }
